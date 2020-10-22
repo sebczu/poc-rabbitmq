@@ -13,3 +13,13 @@ http://localhost:15672
 username: admin
 password: test
 ```
+
+#### 3. Build package
+```bash
+mvn clean install
+```
+
+#### 4. Run service
+```bash
+mvn clean install -Prun
+```

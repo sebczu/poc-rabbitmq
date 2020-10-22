@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: poc-rabbitmq
+
+management:
+  endpoints:
+    web:
+      exposure:
+        includ: "*"
