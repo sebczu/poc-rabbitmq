@@ -37,11 +37,11 @@ public class QueueListenerAckController {
     channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, true);
   }
 
-  @RabbitListener(queues = RabbitmqConfiguration.QUEUE_ACK_NAME, ackMode = "MANUAL")
+  @RabbitListener(queues = RabbitmqConfiguration.QUEUE_ACK_NAME, ackMode = "AUTO")
   public void getFromQueue2(Message message, Channel channel) throws IOException, InterruptedException {
     log.info("listener 2: nack");
     Thread.sleep(5000);
-    channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, true);
+    throw new RuntimeException();
   }
 
   @RabbitListener(queues = RabbitmqConfiguration.QUEUE_ACK_NAME, ackMode = "MANUAL")
