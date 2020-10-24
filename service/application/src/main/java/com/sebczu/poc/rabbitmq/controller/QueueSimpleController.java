@@ -1,8 +1,8 @@
 package com.sebczu.poc.rabbitmq.controller;
 
-import com.sebczu.poc.rabbitmq.RabbitmqConfiguration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +13,18 @@ import org.springframework.web.bind.annotation.*;
 public class QueueSimpleController {
 
   private final RabbitTemplate rabbitTemplate;
+  private final Queue queueSimple;
 
   @PostMapping
   public void sendToQueue(@RequestParam(value = "message") String message) {
-    rabbitTemplate.convertAndSend(RabbitmqConfiguration.QUEUE_SIMPLE_NAME, message);
-    log.info("message: {} send into queue: {}", message, RabbitmqConfiguration.QUEUE_SIMPLE_NAME);
+    rabbitTemplate.convertAndSend(queueSimple.getName(), message);
+    log.info("message: {} send into queue: {}", message, queueSimple.getName());
   }
 
   @GetMapping
   public String getFromQueue() {
-    Object message = rabbitTemplate.receiveAndConvert(RabbitmqConfiguration.QUEUE_SIMPLE_NAME);
-    log.info("message: {} receive from queue: {}", message, RabbitmqConfiguration.QUEUE_SIMPLE_NAME);
+    Object message = rabbitTemplate.receiveAndConvert(queueSimple.getName());
+    log.info("message: {} receive from queue: {}", message, queueSimple.getName());
     return message == null ? "any message exist" : message.toString();
   }
 

@@ -8,7 +8,7 @@ import org.springframework.amqp.core.Queue;
 @Configuration
 public class RabbitmqConfiguration {
 
-  public static final String QUEUE_SIMPLE_NAME = "queue-simple";
+  private static final String QUEUE_SIMPLE_NAME = "queue-simple";
   public static final String QUEUE_LISTENER_NAME = "queue-listener";
 
   @Bean
