@@ -14,12 +14,12 @@ username: admin
 password: test
 ```
 
-#### 3. Build package
+#### 3. Build service
 ```bash
 mvn clean install
 ```
 
-#### 4. Run service
+#### 4.Run service
 ```bash
-mvn clean install -Prun
+mvn clean package -Prun
 ```
