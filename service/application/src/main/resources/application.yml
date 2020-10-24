@@ -6,6 +6,8 @@ spring:
     host: localhost
     username: admin
     password: test
+#  listener:
+#    acknowledge-mode: manual
 
 management:
   endpoints:

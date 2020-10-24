@@ -10,6 +10,7 @@ public class RabbitmqConfiguration {
 
   private static final String QUEUE_SIMPLE_NAME = "queue-simple";
   public static final String QUEUE_LISTENER_NAME = "queue-listener";
+  public static final String QUEUE_ACK_NAME = "queue-ack";
 
   @Bean
   public Queue queueSimple() {
@@ -19,6 +20,11 @@ public class RabbitmqConfiguration {
   @Bean
   public Queue queueListener() {
     return new Queue(QUEUE_LISTENER_NAME, false);
+  }
+
+  @Bean
+  public Queue queueAck() {
+    return new Queue(QUEUE_ACK_NAME, false);
   }
 
 }

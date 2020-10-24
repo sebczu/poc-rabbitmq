@@ -3,6 +3,7 @@ package com.sebczu.poc.rabbitmq.controller;
 import com.sebczu.poc.rabbitmq.RabbitmqConfiguration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -24,8 +25,11 @@ public class QueueListenerController {
   }
 
   @RabbitListener(queues = RabbitmqConfiguration.QUEUE_LISTENER_NAME)
-  private void getFromQueue(String message){
-    log.info("message: {} receive from queue: {}", message, queueListener.getName());
+  public void getFromQueue(Message message){
+    log.info("message: {} receive from queue: {}", new String(message.getBody()), queueListener.getName());
+    log.info("message properties:");
+    log.info("appId: {}", message.getMessageProperties().getAppId());
+    log.info("correlationId: {}", message.getMessageProperties().getCorrelationId());
   }
 
 }
