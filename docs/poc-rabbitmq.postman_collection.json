@@ -6,46 +6,104 @@
 	},
 	"item": [
 		{
-			"name": "Send message to queue",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/queue?message=example",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"queue"
-					],
-					"query": [
-						{
-							"key": "message",
-							"value": "example"
+			"name": "queue-simple",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/queue/simple?message=example",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"queue",
+								"simple"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "example"
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/queue/simple",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"queue",
+								"simple"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/queue/simple",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"queue",
+								"simple"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Consume message from queue",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/queue",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"queue"
-					]
+			"name": "queue-listener",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/queue/listener?message=example",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"queue",
+								"listener"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "example"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
