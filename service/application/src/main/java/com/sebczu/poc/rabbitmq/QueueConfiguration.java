@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.amqp.core.Queue;
 
 @Configuration
-public class RabbitmqConfiguration {
+public class QueueConfiguration {
 
   private static final String QUEUE_SIMPLE_NAME = "queue-simple";
   public static final String QUEUE_LISTENER_NAME = "queue-listener";

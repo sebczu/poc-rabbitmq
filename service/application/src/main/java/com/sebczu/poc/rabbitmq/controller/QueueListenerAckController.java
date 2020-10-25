@@ -1,7 +1,7 @@
 package com.sebczu.poc.rabbitmq.controller;
 
 import com.rabbitmq.client.Channel;
-import com.sebczu.poc.rabbitmq.RabbitmqConfiguration;
+import com.sebczu.poc.rabbitmq.QueueConfiguration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
@@ -30,21 +30,21 @@ public class QueueListenerAckController {
     log.info("message: {} send into queue: {}", message, queueAck.getName());
   }
 
-  @RabbitListener(queues = RabbitmqConfiguration.QUEUE_ACK_NAME, ackMode = "MANUAL")
+  @RabbitListener(queues = QueueConfiguration.QUEUE_ACK_NAME, ackMode = "MANUAL")
   public void getFromQueue1(Message message, Channel channel) throws IOException, InterruptedException {
     log.info("listener 1: nack");
     Thread.sleep(5000);
     channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, true);
   }
 
-  @RabbitListener(queues = RabbitmqConfiguration.QUEUE_ACK_NAME, ackMode = "AUTO")
-  public void getFromQueue2(Message message, Channel channel) throws IOException, InterruptedException {
+  @RabbitListener(queues = QueueConfiguration.QUEUE_ACK_NAME, ackMode = "AUTO")
+  public void getFromQueue2(Message message, Channel channel) throws InterruptedException {
     log.info("listener 2: nack");
     Thread.sleep(5000);
     throw new RuntimeException();
   }
 
-  @RabbitListener(queues = RabbitmqConfiguration.QUEUE_ACK_NAME, ackMode = "MANUAL")
+  @RabbitListener(queues = QueueConfiguration.QUEUE_ACK_NAME, ackMode = "MANUAL")
   public void getFromQueue3(Message message, Channel channel) throws IOException, InterruptedException {
     log.info("listener 3: ack");
     Thread.sleep(5000);

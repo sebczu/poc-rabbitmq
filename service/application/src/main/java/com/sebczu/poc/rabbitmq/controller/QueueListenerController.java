@@ -1,6 +1,6 @@
 package com.sebczu.poc.rabbitmq.controller;
 
-import com.sebczu.poc.rabbitmq.RabbitmqConfiguration;
+import com.sebczu.poc.rabbitmq.QueueConfiguration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
@@ -26,7 +26,7 @@ public class QueueListenerController {
     log.info("message: {} send into queue: {}", message, queueListener.getName());
   }
 
-  @RabbitListener(queues = RabbitmqConfiguration.QUEUE_LISTENER_NAME)
+  @RabbitListener(queues = QueueConfiguration.QUEUE_LISTENER_NAME)
   public void getFromQueue(Message message, @Header(AmqpHeaders.CONSUMER_TAG) String consumerTag){
     log.info("message: {} receive from queue: {}", new String(message.getBody()), queueListener.getName());
     log.info("message properties:");

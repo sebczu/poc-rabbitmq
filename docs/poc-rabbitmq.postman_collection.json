@@ -104,6 +104,68 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "queue-ack",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/queue/ack?message=example",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"queue",
+								"ack"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "example"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "fanout",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pubsub/fanout?message=example",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pubsub",
+								"fanout"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "example"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
