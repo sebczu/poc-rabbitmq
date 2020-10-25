@@ -137,7 +137,7 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "fanout",
+			"name": "exchange-fanout",
 			"item": [
 				{
 					"name": "Create",
@@ -145,14 +145,98 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/pubsub/fanout?message=example",
+							"raw": "localhost:8080/exchange/fanout?message=example",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"pubsub",
+								"exchange",
 								"fanout"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "example"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "exchange-direct",
+			"item": [
+				{
+					"name": "Route1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/exchange/direct/route1?message=example",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exchange",
+								"direct",
+								"route1"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "example"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/exchange/direct/route2?message=example",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exchange",
+								"direct",
+								"route2"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "example"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RouteAll",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/exchange/direct/routeAll?message=example",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exchange",
+								"direct",
+								"routeAll"
 							],
 							"query": [
 								{

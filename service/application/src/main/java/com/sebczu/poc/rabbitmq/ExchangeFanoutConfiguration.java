@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class PubSubConfiguration {
+public class ExchangeFanoutConfiguration {
 
   public static final String QUEUE_FANOUT_1_NAME = "queue-fanout-1";
   public static final String QUEUE_FANOUT_2_NAME = "queue-fanout-2";
