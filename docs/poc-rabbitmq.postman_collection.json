@@ -250,6 +250,64 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "exchange-topic",
+			"item": [
+				{
+					"name": "User100",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/exchange/topic/user100?message=example",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exchange",
+								"topic",
+								"user100"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "example"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User200",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/exchange/topic/user200?message=example",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exchange",
+								"topic",
+								"user200"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "example"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
