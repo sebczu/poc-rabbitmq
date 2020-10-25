@@ -1,10 +1,12 @@
 package com.sebczu.poc.rabbitmq.controller;
 
 import com.sebczu.poc.rabbitmq.ExchangeHeaderConfiguration;
-import com.sebczu.poc.rabbitmq.ExchangeTopicConfiguration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.*;
+import org.springframework.amqp.core.HeadersExchange;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -22,7 +24,6 @@ public class ExchangeHeaderController {
 
   private final RabbitTemplate rabbitTemplate;
   private final HeadersExchange headerExchange;
-  private final Queue queueHeaderUsers;
   private final Queue queueHeaderUser100;
   private final Queue queueHeaderUser200;
 
@@ -46,11 +47,6 @@ public class ExchangeHeaderController {
 
     rabbitTemplate.send(headerExchange.getName(), "", message);
     log.info("message: {} send into exchange: {} with header: {}", text, headerExchange.getName(), "user=200");
-  }
-
-  @RabbitListener(queues = ExchangeHeaderConfiguration.QUEUE_HEADER_USERS_NAME)
-  public void getFromQueueHeaderUsers(Message message) {
-    log.info("message: {} receive from queue: {}", new String(message.getBody()), queueHeaderUsers.getName());
   }
 
   @RabbitListener(queues = ExchangeHeaderConfiguration.QUEUE_HEADER_USER_100_NAME)
